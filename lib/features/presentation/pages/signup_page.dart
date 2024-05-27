@@ -1,3 +1,4 @@
+import 'package:blog_app/features/presentation/widgets/aut_gradient_button.dart';
 import 'package:blog_app/features/presentation/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,9 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(height: 15),
             AuthField(hintText: 'Email'),
             SizedBox(height: 15),
-            AuthField(hintText: 'Password')
+            AuthField(hintText: 'Password'),
+            SizedBox(height: 20),
+            AutGradientButton(),
           ],
         ),
       ),
