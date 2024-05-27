@@ -1,7 +1,7 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/features/presentation/pages/signup_page.dart';
-import 'package:blog_app/features/presentation/widgets/aut_gradient_button.dart';
 import 'package:blog_app/features/presentation/widgets/auth_field.dart';
+import 'package:blog_app/features/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
