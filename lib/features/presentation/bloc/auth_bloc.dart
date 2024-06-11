@@ -1,3 +1,4 @@
+import 'package:blog_app/features/domain/entities/user.dart';
 import 'package:blog_app/features/domain/usecases/user_sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,8 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         password: event.password,
       ));
       res.fold(
-        (l) => emit(AuthFailure(l.message)),
-        (r) => emit(AuthSuccess(r)),
+        (failure) => emit(AuthFailure(failure.message)),
+        (user) => emit(AuthSuccess(user)),
       );
     });
   }
