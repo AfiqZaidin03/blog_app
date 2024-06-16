@@ -1,5 +1,4 @@
 import 'package:blog_app/core/common/widgets/loader.dart';
-import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_app/features/blog/presentation/pages/add_blog_page.dart';
@@ -60,7 +59,11 @@ class _BlogPageState extends State<BlogPage> {
                 final blog = state.blogs[index];
                 return BlogCard(
                   blog: blog,
-                  color: AppPallete.gradient1,
+                  color: index % 3 == 0
+                      ? Colors.blueGrey
+                      : index % 3 == 1
+                          ? Colors.green
+                          : Colors.red,
                 );
               },
             );
