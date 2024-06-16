@@ -1,3 +1,4 @@
+import 'package:blog_app/core/utils/calculate_reading_time.dart';
 import 'package:blog_app/features/blog/domain/entities/blog.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +50,7 @@ class BlogCard extends StatelessWidget {
               ),
             ],
           ),
-          const Text('1 min'),
+          Text('${calculateReadingtime(blog.content)} min'),
         ],
       ),
     );
