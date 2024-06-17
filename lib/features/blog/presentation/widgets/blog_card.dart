@@ -1,5 +1,6 @@
 import 'package:blog_app/core/utils/calculate_reading_time.dart';
 import 'package:blog_app/features/blog/domain/entities/blog.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_viewer_page.dart';
 import 'package:flutter/material.dart';
 
 class BlogCard extends StatelessWidget {
@@ -13,45 +14,53 @@ class BlogCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.all(16).copyWith(bottom: 5),
-      height: 200,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: blog.topics
-                      .map(
-                        (e) => Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Chip(label: Text(e)),
-                        ),
-                      )
-                      .toList(),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          BlogViewerPage.route(blog),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16).copyWith(bottom: 5),
+        height: 200,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: blog.topics
+                        .map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Chip(label: Text(e)),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
-              ),
-              Text(
-                blog.title,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                Text(
+                  blog.title,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Text('${calculateReadingtime(blog.content)} min'),
-        ],
+              ],
+            ),
+            Text('${calculateReadingtime(blog.content)} min'),
+          ],
+        ),
       ),
     );
   }
