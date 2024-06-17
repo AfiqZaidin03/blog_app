@@ -44,7 +44,7 @@ class BlogViewerPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  'By ${formatDateBydMMYYY(blog.updatedAt)} . ${calculateReadingtime(blog.content)} min',
+                  '${formatDateBydMMYYY(blog.updatedAt)} . ${calculateReadingtime(blog.content)} min',
                   style: const TextStyle(
                     color: AppPallete.greyColor,
                     fontSize: 16,
