@@ -30,6 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
+    on<AuthLogout>(_onAuthLogout);
   }
 
   void _isUserLoggedIn(
@@ -73,6 +74,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (l) => emit(AuthFailure(l.message)),
       (r) => _emitAuthSuccess(r, emit),
     );
+  }
+
+  void _onAuthLogout(
+    AuthLogout event,
+    Emitter<AuthState> emit,
+  ) {
+    _appUserCubit.updateUser(null);
+    emit(AuthInitial());
   }
 
   void _emitAuthSuccess(

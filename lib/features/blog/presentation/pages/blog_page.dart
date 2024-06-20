@@ -1,5 +1,6 @@
 import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_app/features/blog/presentation/pages/add_blog_page.dart';
 import 'package:blog_app/features/blog/presentation/widgets/blog_card.dart';
@@ -70,6 +71,16 @@ class _BlogPageState extends State<BlogPage> {
           }
           return const SizedBox();
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          context.read<AuthBloc>().add(AuthLogout());
+        },
+        child: const Icon(
+          Icons.logout,
+          color: Colors.black,
+        ),
       ),
     );
   }
