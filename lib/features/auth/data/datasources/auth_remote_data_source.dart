@@ -1,3 +1,4 @@
+import 'package:blog_app/core/constant/constants.dart';
 import 'package:blog_app/core/error/exceptions.dart';
 import 'package:blog_app/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -76,7 +77,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       if (currentUserSession != null) {
         final userData = await supabaseClient
-            .from('profiles')
+            .from(Constants.dbTable)
             .select()
             .eq('id', currentUserSession!.user.id);
         return UserModel.fromJson(userData.first).copyWith(
